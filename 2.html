@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>jQuery Lab</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="public/main.css">
+</head>
+
+<body>
+    <header id="page_header" class="page-header">
+        <div class="container">
+            <h1>iPhone 101</h1>
+        </div>
+    </header>
+
+    <div class="container">
+        <section class="section-block">
+            <video id="landing_video" width="480" autoplay>
+                <source src="img/iphone.mp4" type="video/mp4">
+                เสียใจจัง เว็บเบราว์เซอร์คุณไม่รองรับ HTML5 Video Tag
+            </video>
+            <div class="landing_page_content">
+                <h2>พอเหมาะพอดี<br>กับเวลาที่ต้องเรียกตรวจรับลายเซ็นเลย</h2>
+                <p>ทั้งระบบการเรียนแบบใหม่ผ่าน Zoom ที่ให้คุณเก็บวีดิโอสิ่งที่คุณเห็นและรัก ได้เต็มตามาก ขึ้น โค้ดที่เยอะที่สุดเท่าที่เคยมีมา และแบตเตอรี่ที่ใช้งานได้ตลอดวันที่ให้คุณทําอะไรๆ ได้มากขึ้น แต่ชาร์จ น้อยลง ประกอบกับวิดีโอคุณภาพสูงที่สุดในสมาร์ทโฟน
+                    ชัดเลยว่าครั้งนี้ความทรงจําของคุณจะดูดียิ่งกว่าครั้ง ไหนๆ
+                </p>
+            </div>
+        </section>
+
+
+        <section id="trigger" class="section-block">
+            <header>
+                <h2>เอาล่ะ เรามาย่อวีดิโอกัน</h2>
+            </header>
+            <div>
+                <figure id="car_video_container">
+                    <video id="car_video" width="1100" align="center" autoplay loop>
+                        <source src="img/car.mp4"type="video/mp4"> เสียใจจัง เว็บเบราว์เซอร์คุณไม่รองรับ HTML5 Video Tag
+                    </video>
+                </figure>
+            </div>
+        </section>
+
+        <section class="section-block">
+            <h2>Section 3</h2>
+        </section>
+
+        <div class="developer-panel">
+            <section class="mb-3">
+                <header>#page_header's position</header>
+                <div>
+                    <div>
+                        Top: <span id="window_top"></span>
+                    </div>
+                    <div>
+                        Left: <span id="window_left"></span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-3">
+                <header>#trigger's position</header>
+                <div>
+                    <div>
+                        Top: <span id="trigger_top"></span>
+                    </div>
+                    <div>
+                        Height: <span id="trigger_height"></span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-3">
+                <header>Current position within #trigger?</header>
+                <div>
+                    <div>
+                        Result: <span id="top_reach"></span>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $(window).scroll(function() {
+                //page header
+                var topp = $("#page_header").position();
+                $("#window_top").text(topp.top);
+                $("#window_left").text(topp.left);
+                //trigger
+                var trigt = $("#trigger").position();
+                var trigh = $("#car_video").height();
+                $("#trigger_top").text(trigt.top);
+                $("#trigger_height").text(trigh);
+                //current
+                if (topp.top > 911 && topp.top < 1580) {
+                    $("#top_reach").text("Yes");
+
+                    siz = $("#car_video").width((1100 - (topp.top) + trigh));
+                    $("#car_video").css("width", siz);
+                } else {
+                    $("#top_reach").text("No");
+                    $("#car_video").css("width", 1100);
+
+                }
+            })
+        });
+    </script>
+</body>
+
+</html>
