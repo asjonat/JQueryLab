@@ -95,13 +95,14 @@
                 //trigger
                 var trigt = $("#trigger").position();
                 var trigh = $("#car_video").height();
+                var trigw = $("#car_video").width();
                 $("#trigger_top").text(trigt.top);
                 $("#trigger_height").text(trigh);
                 //current
-                if (topp.top > 911 && topp.top < 1580) {
+                if (topp.top > 912 && topp.top - trigh) {
                     $("#top_reach").text("Yes");
 
-                    siz = $("#car_video").width((1100 - (topp.top) + trigh));
+                    siz = $("#car_video").width(trigw - 10);
                     $("#car_video").css("width", siz);
                 } else {
                     $("#top_reach").text("No");
